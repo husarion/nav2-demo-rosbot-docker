@@ -4,7 +4,7 @@ services:
 
   nav2:
     build:
-      context: ../../ 
+      context: ./
       dockerfile: ./Dockerfile
     tty: true        
     restart: on-failure
@@ -38,12 +38,7 @@ services:
     restart: on-failure
     environment:
       - "ROS_MASTER_URI=http://my-ros-master:11311"
-    command: 
-      - bash
-      - -c
-      - |
-        stdbuf -o L roscore &
-        ros2 run ros1_bridge dynamic_bridge
+    command: ros2 run ros1_bridge dynamic_bridge
 
   rviz2:
     image: husarion/rviz2-rosbot:vnc
